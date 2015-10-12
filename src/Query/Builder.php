@@ -1,9 +1,9 @@
 <?php
-namespace Watson\Rememberable\Query;
+namespace NhaHV\MongoDBRememberable\Query;
 
 use Illuminate\Support\Facades\Cache;
 
-class Builder extends \Illuminate\Database\Query\Builder
+class Builder extends \Jenssegers\Mongodb\Query\Builder
 {
     /**
      * The key that should be used when caching the query.
@@ -160,18 +160,6 @@ class Builder extends \Illuminate\Database\Query\Builder
     public function getCacheKey()
     {
         return $this->cacheKey ?: $this->generateCacheKey();
-    }
-
-    /**
-     * Generate the unique cache key for the query.
-     *
-     * @return string
-     */
-    public function generateCacheKey()
-    {
-        $name = $this->connection->getName();
-
-        return md5($name.$this->toSql().serialize($this->getBindings()));
     }
 
     /**

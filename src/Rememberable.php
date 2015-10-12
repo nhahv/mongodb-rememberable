@@ -1,7 +1,7 @@
 <?php
-namespace Watson\Rememberable;
+namespace NhaHV\MongoDBRememberable;
 
-use Watson\Rememberable\Query\Builder;
+use Nhahv\MongoDBRememberable\Query\Builder;
 
 trait Rememberable
 {
@@ -14,8 +14,6 @@ trait Rememberable
     {
         $conn = $this->getConnection();
 
-        $grammar = $conn->getQueryGrammar();
-
-        return new Builder($conn, $grammar, $conn->getPostProcessor());
+        return new Builder($conn, $conn->getPostProcessor());
     }
 }
