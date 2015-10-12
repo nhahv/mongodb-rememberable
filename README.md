@@ -10,17 +10,33 @@ It works by simply remembering the SQL query that was used and storing the resul
 
 ## Installation
 
-Install using Composer, just as you would anything else.
+Add GitHub Repositories
 
-    composer require watson/rememberable
+```
+ "repositories": 
+     [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:nhahv/mongodb-rememberable.git"
+        }
+     ],
+  "require":{
+      "..."  
+      "nhahv/mongodb-rememberable":"dev-master"
+  }
+```
+
+Update Composer  
+
+    composer update
 
 The easiest way to get started with Eloquent is to create an abstract `App\Model` which you can extend your application models from. In this base model you can import the rememberable trait which will extend the same caching functionality to any queries you build off your model.
 
     <?php
     namespace App;
 
-    use Illuminate\Database\Eloquent\Model as Eloquent;
-    use Watson\Rememberable\Rememberable;
+    use Jenssegers\Mongodb\Model as Eloquent;
+    use NhaHV\MongoDBRememberable\Rememberable;
 
     abstract class Model extends Eloquent
     {
